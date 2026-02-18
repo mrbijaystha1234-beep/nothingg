@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Aayusha ❤️</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 2s ease;
+  }
+
+  h1 {
+    color: #ff4d6d;
+  }
+
+  p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .yes {
+    background: #ff4d6d;
+    color: white;
+  }
+
+  .no {
+    background: #ccc;
+  }
+
+  .yes:hover {
+    transform: scale(1.1);
+  }
+
+  .heart {
+    position: absolute;
+    animation: float 6s linear infinite;
+  }
+
+  @keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Aayusha ❤️</h1>
+  <p>
+    These past 6–7 months with you have been truly special to me.  
+    You are charming, beautiful, and stunning in every way, but what made me fall for you is your heart and the warmth you bring into my life.
+
+    <br><br>
+    I know you worry about long distance and about ruining what we have. But I don’t see distance as something that will break us. I believe we can figure everything out together, step by step. I don’t expect perfection—only honesty, patience, and effort.
+
+    <br><br>
+    I promise I will always try to protect what we share. I want to be there for you in your highs and your lows, and I want you to always feel safe with me, no matter the distance.
+
+    <br><br>
+    Will you accept my proposal?
+  </p>
+
+  <button class="yes" onclick="yes()">Yes ❤️</button>
+  <button class="no" onmouseover="move()">No 😅</button>
+</div>
+
+<script>
+function yes() {
+  document.body.innerHTML =
+    "<h1 style='color:white;text-align:center;margin-top:40vh;'>I really love you. I promise I will treasure you for my whole life and always appreciate you for being with me. I will never let you down. I promise. ❤️</h1>";
+}
+
+function move() {
+  const no = document.querySelector(".no");
+  no.style.position = "absolute";
+  no.style.left = Math.random() * 80 + "%";
+  no.style.top = Math.random() * 80 + "%";
+}
+
+// floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 12 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+</script>
+
+</body>
+</html>
