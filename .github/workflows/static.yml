@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Aayusha ❤️</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 2s ease;
+  }
+
+  h1 {
+    color: #ff4d6d;
+  }
+
+  p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .heart {
+    position: absolute;
+    animation: float 6s linear infinite;
+  }
+
+  @keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Aayusha ❤️</h1>
+  <p>
+    These past 6–7 months with you have been really special to me.  
+    You are charming, beautiful, and stunning in every way, but what truly made me fall for you is your heart and the way you make everything feel warm and real.
+
+    <br><br>
+    I know you worry about long distance and about ruining what we already have. But I don’t see this as something that will break us. I believe we can figure things out together. Instead of letting fear or distance ruin what we share, I want us to grow through it, step by step.
+
+    <br><br>
+    I don’t expect perfection. I just want honesty, patience, and effort. I promise I will always try to protect what we have, not destroy it. I want to be there for you in your highs and your lows, and I want you to always feel safe with me, no matter the distance.
+
+    <br><br>
+    I just wanted you to know how much you truly mean to me ❤️
+  </p>
+</div>
+
+<script>
+// floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 12 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+</script>
+
+</body>
+</html>
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
